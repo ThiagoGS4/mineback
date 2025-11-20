@@ -7,7 +7,8 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js",
+    "test": "echo \"No tests\" && exit 0"
   },
   "dependencies": {
     "@azure/arm-compute": "^23.1.0",
