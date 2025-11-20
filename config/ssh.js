@@ -6,7 +6,7 @@ function getPrivateKey() {
   }
 
   if (process.env.SSH_KEY_PATH) {
-    return fs.readFileSync(process.env.SSH_KEY_PATH);
+    return fs.readFileSync(process.env.SSH_KEY_PATH, 'utf8');
   }
 
   throw new Error('No SSH key configured');
