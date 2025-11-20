@@ -2,13 +2,12 @@ import fs from 'fs';
 
 function getPrivateKey() {
   if (process.env.SSH_PRIVATE_KEY) {
+    // opcional: suporte ao modo env
     return process.env.SSH_PRIVATE_KEY;
   }
-
   if (process.env.SSH_KEY_PATH) {
     return fs.readFileSync(process.env.SSH_KEY_PATH, 'utf8');
   }
-
   throw new Error('No SSH key configured');
 }
 
