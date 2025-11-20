@@ -30,6 +30,10 @@ app.use(cors({
   allowedHeaders: ['Content-Type', 'x-api-key', 'Authorization'],
 }));
 
+app.get('/health', (req, res) => {
+  res.json({ status: 'ok' });
+});
+
 routes(app)
 
 
