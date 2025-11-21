@@ -26,7 +26,7 @@ app.use(cors());
 app.use(checkAPIKey)
 
 app.use(cors({
-  origin: CLIENT_ADDRESS ?? 'http://localhost:5173',
+  origin: CLIENT_ADDRESS, //?? 'http://localhost:5173',
   methods: ['GET', 'POST', 'DELETE', 'PUT', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'x-api-key', 'Authorization'],
 }));
