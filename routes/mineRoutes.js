@@ -14,5 +14,8 @@ router
     .get('/mc/status', MineServer.getMcStatus)
     .post('/startServer', checkStateVM, MineServer.startMcServer)
     .post('/stopServer', checkStateVM, MineServer.stopMcServer)
+    .get('/worlds', MineServer.getWorldsList)
+    .post('/moveWorld', MineServer.moveWorld)
+    .post('/restoreWorld', MineServer.restoreSelectedWorld)
 
 export default router
