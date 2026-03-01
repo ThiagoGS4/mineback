@@ -10,7 +10,9 @@ const {
   AZ_RESOURCE_GROUP,
   AZ_VM_NAME,
   CLIENT_ADDRESS,
-  SERVER_PORT = 3000,
+  MODE,
+  SERVER_URL,
+  SERVER_PORT,
 } = process.env;
 
 if (!AZ_SUBSCRIPTION_ID || !AZ_RESOURCE_GROUP || !AZ_VM_NAME) {
@@ -26,7 +28,7 @@ app.use(cors());
 app.use(checkAPIKey)
 
 app.use(cors({
-  origin: CLIENT_ADDRESS, //?? 'http://localhost:5173',
+  origin: MODE === 'prod' ? CLIENT_ADDRESS : 'http://localhost:5173',
   methods: ['GET', 'POST', 'DELETE', 'PUT', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'x-api-key', 'Authorization'],
 }));
@@ -40,5 +42,9 @@ routes(app)
 const PORT = process.env.PORT || SERVER_PORT || 3000
 
 app.listen(PORT, () => {
-  console.log(`API listening on http://localhost:${PORT}`);
+  if(MODE !== 'prod'){
+    console.log(`API listening on http://localhost:${PORT}`);
+  } else {
+    console.log(`API listening on ${SERVER_URL}:${PORT}`);
+  }
 });
